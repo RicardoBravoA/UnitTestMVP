@@ -18,7 +18,7 @@ public class NetworkError extends Throwable {
         this.error = e;
     }
 
-    public String getMessage() {
+    public String getMessageNetwork() {
         return error.getMessage();
     }
 

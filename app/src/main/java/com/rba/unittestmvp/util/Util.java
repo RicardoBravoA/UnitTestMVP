@@ -14,6 +14,11 @@ import java.util.regex.Pattern;
 
 
 public class Util {
+
+    private Util() {
+        throw new IllegalAccessError("Util class");
+    }
+
     public static boolean validEmail(String email){
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
@@ -24,11 +29,7 @@ public class Util {
             ErrorResponse errorResponse = new Gson().fromJson(json, ErrorResponse.class);
             Log.i("z- onResponse", new Gson().toJson(errorResponse));
             Log.i("z- getStatus", " - "+errorResponse.getStatus());
-            if(errorResponse.getStatus() == null){
-                return false;
-            }else{
-                return  true;
-            }
+            return errorResponse.getStatus() != null;
         }catch (ClassCastException e){
             e.printStackTrace();
         }

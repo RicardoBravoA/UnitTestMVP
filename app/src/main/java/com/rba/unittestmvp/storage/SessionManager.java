@@ -17,6 +17,10 @@ public class SessionManager {
     private static final String KEY_DATA = "data";
     private static final String PREF_NAME = "MVP_PROJECT";
 
+    private SessionManager() {
+        throw new IllegalAccessError("SessionManager class");
+    }
+
     private static void initSessionManager(Context context){
         if(sharedPreferences == null){
             sharedPreferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);

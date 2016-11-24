@@ -50,12 +50,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         txtEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                throw new UnsupportedOperationException();
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                throw new UnsupportedOperationException();
             }
 
             @Override
@@ -69,12 +69,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
         txtPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                throw new UnsupportedOperationException();
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                throw new UnsupportedOperationException();
             }
 
             @Override
@@ -176,10 +176,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
     @Override
     public boolean validPassword() {
-        if(!txtPassword.getText().toString().trim().isEmpty()){
-            if(txtPassword.getText().toString().trim().length()>5){
-                return true;
-            }
+        if(!txtPassword.getText().toString().trim().isEmpty() &&
+                (txtPassword.getText().toString().trim().length()>5)){
+            return true;
         }
         showPasswordError();
         return false;
@@ -187,10 +186,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
     @Override
     public boolean validEmail() {
-        if(!txtEmail.getText().toString().trim().isEmpty()){
-            if(Util.validEmail(txtEmail.getText().toString().trim())){
-                return true;
-            }
+        if(!txtEmail.getText().toString().trim().isEmpty() &&
+                (Util.validEmail(txtEmail.getText().toString().trim()))){
+            return true;
         }
         showEmailError();
         return false;

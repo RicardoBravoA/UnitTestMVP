@@ -20,6 +20,10 @@ public class DemoApiManager {
 
     private static DemoApi demoApi ;
 
+    private DemoApiManager() {
+        throw new IllegalAccessError("DemoApiManager class");
+    }
+
     public static DemoApi apiManager() {
 
         if(demoApi == null){

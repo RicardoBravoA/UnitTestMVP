@@ -42,8 +42,9 @@ public class MVPProjectApplication extends Application {
     }
 
     public Scheduler SubscribeScheduler() {
-        if (mScheduler == null) mScheduler = Schedulers.io();
-
+        if (mScheduler == null){
+            mScheduler = Schedulers.io();
+        }
         return mScheduler;
     }
 

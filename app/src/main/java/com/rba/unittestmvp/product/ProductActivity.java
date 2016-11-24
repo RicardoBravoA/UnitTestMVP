@@ -62,12 +62,6 @@ public class ProductActivity extends AppCompatActivity implements ProductView {
     @Override
     public void showProduct(List<ProductResponse.DataBean> productDataBeanList) {
         Log.i("x- showProduct", new Gson().toJson(productDataBeanList));
-        /*
-        productAdapter.setProduct(productDataBeanList);
-        productAdapter.notifyDataSetChanged();
-        */
-
-        //ProductAdapter productAdapter = (ProductAdapter) rcvProduct.getAdapter();
         productAdapter.setProduct(productDataBeanList);
         productAdapter.notifyDataSetChanged();
 

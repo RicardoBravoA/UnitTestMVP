@@ -6,6 +6,7 @@ package com.rba.unittestmvp.util;
 
 
 public class Constant {
+
     public static final String KEY_SUCCESS = "success";
 
     public static final String KEY_EMAIL = "email";
@@ -13,5 +14,9 @@ public class Constant {
 
     public static final String DEFAULT_ERROR_MESSAGE = "Ocurrió un error, intente nuevamente.";
     public static final String NETWORK_ERROR_MESSAGE = "Verifique su conexión a internet";
+
+    private Constant() {
+        throw new IllegalAccessError("Constant class");
+    }
 
 }

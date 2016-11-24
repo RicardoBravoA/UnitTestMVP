@@ -21,29 +21,13 @@ import rx.schedulers.Schedulers;
 
 public class LoginInteractor {
 
+    private LoginInteractor() {
+        throw new IllegalAccessError("LoginInteractor class");
+    }
+
     public static void login(Map<String, String> data, final LoginCallback callback){
 
         Log.i("x- parameter", data.toString());
-
-        /*
-        Call<LoginResponse> call = DemoApiManager.apiManager().login(data);
-        call.enqueue(new Callback<LoginResponse>() {
-            @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                if(response.isSuccessful()){
-                    callback.onResponse(response.body());
-                }else{
-                    ErrorResponse error = ErrorUtil.parseError(response);
-                    callback.onFailure(error.get_meta().getStatus());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-                callback.onFailure(t.getMessage());
-            }
-        });
-        */
 
         DemoApiManager.apiManager().login(data)
             .subscribeOn(Schedulers.io())
@@ -56,7 +40,7 @@ public class LoginInteractor {
             }).subscribe(new Subscriber<LoginResponse>() {
                 @Override
                 public void onCompleted() {
-
+                    throw new UnsupportedOperationException();
                 }
 
                 @Override

@@ -80,12 +80,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         @Override
         public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.cvProduct:
-                    productActivity.onProductPressed(productEntityList.get(getAdapterPosition()));
-                    break;
-                default:
-                    break;
+            if(view.getId() == R.id.cvProduct){
+                productActivity.onProductPressed(productEntityList.get(getAdapterPosition()));
             }
         }
     }

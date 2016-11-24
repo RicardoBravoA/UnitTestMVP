@@ -22,6 +22,10 @@ import rx.schedulers.Schedulers;
 
 public class ProductInteractor {
 
+    private ProductInteractor() {
+        throw new IllegalAccessError("ProductInteractor class");
+    }
+
     public static void product(final ProductCallback callback){
 
         Log.i("z- ProductInteractor", "product");
