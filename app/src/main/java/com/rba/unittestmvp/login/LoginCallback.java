@@ -1,5 +1,6 @@
 package com.rba.unittestmvp.login;
 
+import com.rba.unittestmvp.api.client.NetworkError;
 import com.rba.unittestmvp.model.response.LoginResponse;
 
 /**
@@ -11,6 +12,6 @@ public interface LoginCallback {
 
     void onResponse(LoginResponse loginResponse);
 
-    void onFailure(String error);
+    void onFailure(NetworkError networkError);
 
 }

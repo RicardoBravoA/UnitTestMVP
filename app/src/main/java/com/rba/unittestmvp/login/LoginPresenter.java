@@ -3,6 +3,7 @@ package com.rba.unittestmvp.login;
 import android.util.Log;
 
 import com.rba.unittestmvp.R;
+import com.rba.unittestmvp.api.client.NetworkError;
 import com.rba.unittestmvp.app.MVPProjectApplication;
 import com.rba.unittestmvp.model.response.LoginResponse;
 import com.rba.unittestmvp.storage.SessionManager;
@@ -42,8 +43,9 @@ public class LoginPresenter implements LoginCallback {
     }
 
     @Override
-    public void onFailure(String error) {
-        Log.i("x- onError", error);
-        loginView.showErrorMessage(error);
+    public void onFailure(NetworkError networkError) {
+        Log.i("x- onError", networkError.getAppErrorMessage());
+        loginView.showErrorMessage(networkError.getAppErrorMessage());
     }
+
 }

@@ -117,7 +117,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
     public void showEmailError() {
         tilEmail.requestFocus();
         tilEmail.setErrorEnabled(true);
-        tilEmail.setError(getString(R.string.error));
+        if(Util.validEmail(txtEmail.getText().toString().trim())){
+            tilEmail.setError(getString(R.string.error));
+        }else{
+            tilEmail.setError(getString(R.string.error_email));
+        }
+
     }
 
     @Override

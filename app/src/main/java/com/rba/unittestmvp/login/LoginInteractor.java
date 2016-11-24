@@ -2,16 +2,17 @@ package com.rba.unittestmvp.login;
 
 import android.util.Log;
 
-import com.rba.unittestmvp.api.DemoApiManager;
-import com.rba.unittestmvp.api.ErrorUtil;
-import com.rba.unittestmvp.model.response.ErrorResponse;
+import com.rba.unittestmvp.api.client.DemoApiManager;
+import com.rba.unittestmvp.api.client.NetworkError;
 import com.rba.unittestmvp.model.response.LoginResponse;
 
 import java.util.Map;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by Ricardo Bravo on 16/11/16.
@@ -24,6 +25,7 @@ public class LoginInteractor {
 
         Log.i("x- parameter", data.toString());
 
+        /*
         Call<LoginResponse> call = DemoApiManager.apiManager().login(data);
         call.enqueue(new Callback<LoginResponse>() {
             @Override
@@ -41,6 +43,32 @@ public class LoginInteractor {
                 callback.onFailure(t.getMessage());
             }
         });
+        */
+
+        DemoApiManager.apiManager().login(data)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .onErrorResumeNext(new Func1<Throwable, Observable<? extends LoginResponse>>() {
+                @Override
+                public Observable<? extends LoginResponse> call(Throwable throwable) {
+                    return Observable.error(throwable);
+                }
+            }).subscribe(new Subscriber<LoginResponse>() {
+                @Override
+                public void onCompleted() {
+
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    callback.onFailure(new NetworkError(e));
+                }
+
+                @Override
+                public void onNext(LoginResponse loginResponse) {
+                    callback.onResponse(loginResponse);
+                }
+            });
 
     }
 

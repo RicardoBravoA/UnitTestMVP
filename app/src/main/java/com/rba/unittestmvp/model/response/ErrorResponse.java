@@ -6,39 +6,28 @@ package com.rba.unittestmvp.model.response;
 
 
 public class ErrorResponse {
+
     /**
      * status : error
      * code : 101
      */
 
-    private MetaEntity _meta;
+    private String status;
+    private String code;
 
-    public MetaEntity get_meta() {
-        return _meta;
+    public String getStatus() {
+        return status;
     }
 
-    public void set_meta(MetaEntity _meta) {
-        this._meta = _meta;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public static class MetaEntity {
-        private String status;
-        private String code;
+    public String getCode() {
+        return code;
+    }
 
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-        public String getCode() {
-            return code;
-        }
-
-        public void setCode(String code) {
-            this.code = code;
-        }
+    public void setCode(String code) {
+        this.code = code;
     }
 }

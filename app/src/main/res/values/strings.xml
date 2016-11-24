@@ -4,5 +4,6 @@
     <string name="password">Contraseña</string>
     <string name="login">Ingresar</string>
     <string name="error">Mínimo 6 caracteres</string>
+    <string name="error_email">Ingrese un correo válido</string>
     <string name="message_login">Usuario y/o contraseña incorrectos</string>
 </resources>
