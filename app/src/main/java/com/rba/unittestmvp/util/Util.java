@@ -19,9 +19,23 @@ public class Util {
         throw new IllegalAccessError("Util class");
     }
 
-    public static boolean validEmail(String email){
+    public static boolean validEmailPattern(String email){
         Pattern pattern = Patterns.EMAIL_ADDRESS;
         return pattern.matcher(email).matches();
+    }
+
+    public static boolean validEmail(String email){
+        if(validEmailPattern(email.trim())){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean validPassword(String password) {
+        if(password.length()>5){
+            return true;
+        }
+        return false;
     }
 
     public static boolean isError(String json){

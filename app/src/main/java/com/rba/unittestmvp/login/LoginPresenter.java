@@ -8,6 +8,7 @@ import com.rba.unittestmvp.app.MVPProjectApplication;
 import com.rba.unittestmvp.model.response.LoginResponse;
 import com.rba.unittestmvp.storage.SessionManager;
 import com.rba.unittestmvp.util.Constant;
+import com.rba.unittestmvp.util.Util;
 
 import java.util.Map;
 
@@ -29,6 +30,19 @@ public class LoginPresenter implements LoginCallback {
         LoginInteractor.login(data, this);
     }
 
+    public boolean validEmail(String email){
+        if (Util.validEmail(email)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean validPassword(String password){
+        if (Util.validPassword(password)) {
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public void onResponse(LoginResponse loginResponse) {

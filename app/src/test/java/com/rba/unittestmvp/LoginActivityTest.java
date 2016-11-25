@@ -49,31 +49,52 @@ public class LoginActivityTest{
     @Test
     @PrepareForTest(Util.class)
     public void emailSuccessful() {
-        final boolean valueDefault = true;
         String email = "ricardobravo@outlook.com";
-
         PowerMockito.mockStatic(Util.class);
-        Mockito.when(Util.validEmail(email)).thenReturn(valueDefault);
 
-        boolean value = Util.validEmail(email);
-        Assert.assertEquals(valueDefault, value);
-        PowerMockito.verifyStatic(Mockito.times(1));
-
+        Mockito.when(loginPresenter.validEmail(email)).thenReturn(true);
+        Assert.assertTrue(loginPresenter.validEmail(email));
     }
 
     @Test
     @PrepareForTest(Util.class)
     public void emailError() {
-        final boolean valueDefault = false;
         String email = "ricardobravo";
-
         PowerMockito.mockStatic(Util.class);
-        Mockito.when(Util.validEmail(email)).thenReturn(valueDefault);
+        Mockito.when(loginPresenter.validEmail(email)).thenReturn(false);
 
-        boolean value = Util.validEmail(email);
-        Assert.assertEquals(valueDefault, value);
-        PowerMockito.verifyStatic(Mockito.times(1));
+        Assert.assertFalse(loginPresenter.validEmail(email));
     }
+
+    @Test
+    @PrepareForTest(Util.class)
+    public void passwordSuccessful() {
+        String password = "123456";
+        PowerMockito.mockStatic(Util.class);
+        Mockito.when(loginPresenter.validPassword(password)).thenReturn(true);
+        Assert.assertTrue(loginPresenter.validPassword(password));
+    }
+
+    @Test
+    @PrepareForTest(Util.class)
+    public void passwordError() {
+        String password = "123";
+        PowerMockito.mockStatic(Util.class);
+        Mockito.when(loginPresenter.validPassword(password)).thenReturn(false);
+        Assert.assertFalse(loginPresenter.validPassword(password));
+    }
+
+    /*
+    @Test
+    @PrepareForTest(Util.class)
+    public void passwordSuccessfulUtil() {
+        String password = "123";
+        Util util = Mock(Util.class);
+
+        //PowerMockito.mockStatic(Util.class);
+        Assert.assertTrue(Util.validPassword(password));
+    }
+    */
 
 
 }

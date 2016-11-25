@@ -40,7 +40,6 @@ public class LoginInteractor {
             }).subscribe(new Subscriber<LoginResponse>() {
                 @Override
                 public void onCompleted() {
-                    throw new UnsupportedOperationException();
                 }
 
                 @Override

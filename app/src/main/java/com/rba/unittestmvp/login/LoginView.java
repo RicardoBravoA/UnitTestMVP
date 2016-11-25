@@ -27,8 +27,4 @@ public interface LoginView {
 
     void validateData();
 
-    boolean validEmail();
-
-    boolean validPassword();
-
 }
