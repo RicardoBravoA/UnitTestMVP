@@ -85,7 +85,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
         btnLogin.setOnClickListener(this);
 
-
     }
 
     @Override
@@ -144,7 +143,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView, View.
 
     @Override
     public void showErrorMessage(String message) {
-        hideProgress();
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 

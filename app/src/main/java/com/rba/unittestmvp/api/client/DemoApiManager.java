@@ -1,6 +1,7 @@
 package com.rba.unittestmvp.api.client;
 
 import com.rba.unittestmvp.BuildConfig;
+import com.rba.unittestmvp.util.Constant;
 
 import java.util.concurrent.TimeUnit;
 

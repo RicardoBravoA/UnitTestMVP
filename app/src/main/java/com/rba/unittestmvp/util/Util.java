@@ -1,10 +1,16 @@
 package com.rba.unittestmvp.util;
 
+import android.support.design.widget.TextInputLayout;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.View;
 
 import com.google.gson.Gson;
 import com.rba.unittestmvp.model.response.ErrorResponse;
+
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
 
 import java.util.regex.Pattern;
 
@@ -49,6 +55,34 @@ public class Util {
         }
 
         return false;
+    }
+
+    public static Matcher<View> hasTextInputLayoutErrorText(final String expectedErrorText) {
+        return new TypeSafeMatcher<View>() {
+
+            @Override
+            public boolean matchesSafely(View view) {
+                if (!(view instanceof TextInputLayout)) {
+                    return false;
+                }
+
+                CharSequence error = ((TextInputLayout) view).getError();
+
+                if (error == null) {
+                    return false;
+                }
+
+                String hint = error.toString();
+
+                return expectedErrorText.equals(hint);
+            }
+
+            @Override
+            public void describeTo(Description description) {
+
+            }
+
+        };
     }
 
 }

@@ -1,5 +1,3 @@
 
-^squid:S1126"AReplace this if-then-else statement by a single return statement.(¾ŽÊ<8‚Þ˜‰+
-Fsquid:S1148!"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8‚Þ˜‰+
-Csquid:S1166 "%Either log or rethrow this exception.(ðýˆÒ8‚Þ˜‰+
-Qsquid:S1118":Add a private constructor to hide the implicit public one.(×¼­Æ
+Asquid:S1166"%Either log or rethrow this exception.(ðýˆÒ8‚Þ˜‰+
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ8‚Þ˜‰+

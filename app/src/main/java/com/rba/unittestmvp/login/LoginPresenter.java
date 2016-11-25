@@ -46,10 +46,10 @@ public class LoginPresenter implements LoginCallback {
 
     @Override
     public void onResponse(LoginResponse loginResponse) {
+        loginView.hideProgress();
         if(loginResponse.get_meta().getStatus().equals(Constant.KEY_SUCCESS)){
             SessionManager.addSession(MVPProjectApplication.getAppContext(),
                     loginResponse.getData().get(0));
-            loginView.hideProgress();
             loginView.nextActivity();
         }else{
             loginView.showErrorMessage(MVPProjectApplication.getAppContext().getString(R.string.message_login));
@@ -59,6 +59,7 @@ public class LoginPresenter implements LoginCallback {
     @Override
     public void onFailure(NetworkError networkError) {
         Log.i("x- onError", networkError.getAppErrorMessage());
+        loginView.hideProgress();
         loginView.showErrorMessage(networkError.getAppErrorMessage());
     }
 

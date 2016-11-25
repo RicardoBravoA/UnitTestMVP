@@ -24,4 +24,6 @@ public interface DemoApi {
 
     @GET(BuildConfig.URL_PRODUCT)
     Observable<Object> product();
+
+
 }

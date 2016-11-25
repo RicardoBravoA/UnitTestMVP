@@ -1,5 +1,7 @@
 package com.rba.unittestmvp;
 
+import com.rba.unittestmvp.api.client.DemoApiManager;
+import com.rba.unittestmvp.login.LoginCallback;
 import com.rba.unittestmvp.login.LoginPresenter;
 import com.rba.unittestmvp.login.LoginView;
 import com.rba.unittestmvp.util.Constant;
@@ -30,21 +32,15 @@ public class LoginActivityTest{
 
     @Mock private LoginPresenter loginPresenter;
     @Mock private LoginView loginView;
+    @Mock private DemoApiManager demoApiManager;
+    @Mock private LoginCallback loginCallback;
+
 
     @Before
-    public void init(){
+    public void setUp() throws Exception{
         MockitoAnnotations.initMocks(this);
         loginPresenter = new LoginPresenter(loginView);
     }
-
-    @Test
-    public void login() {
-        Map<String, String> data = new HashMap<>();
-        data.put(Constant.KEY_EMAIL, "ricardobravo@outlook.com");
-        data.put(Constant.KEY_PASSWORD, "123456");
-        loginPresenter.login(data);
-    }
-
 
     @Test
     @PrepareForTest(Util.class)
@@ -84,17 +80,26 @@ public class LoginActivityTest{
         Assert.assertFalse(loginPresenter.validPassword(password));
     }
 
-    /*
     @Test
-    @PrepareForTest(Util.class)
-    public void passwordSuccessfulUtil() {
-        String password = "123";
-        Util util = Mock(Util.class);
+    @PrepareForTest(DemoApiManager.class)
+    public void login() throws InterruptedException {
 
-        //PowerMockito.mockStatic(Util.class);
-        Assert.assertTrue(Util.validPassword(password));
+        Assert.assertNotNull(demoApiManager);
+
+        Map<String, String> data = new HashMap<>();
+        data.put(Constant.KEY_EMAIL, "ricardobravo@outlook.com");
+        data.put(Constant.KEY_PASSWORD, "123456");
+        Assert.assertNotNull(loginCallback);
+        loginPresenter.login(data);
+
+
+        Mockito.verify(loginView).showProgress();
+        Mockito.verify(loginView).hideProgress();
+        //Mockito.verify(loginView).nextActivity();
+
+
     }
-    */
+
 
 
 }
