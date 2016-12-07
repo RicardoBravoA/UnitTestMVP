@@ -295,3 +295,5 @@ l
 <app/src/test/java/com/rba/unittestmvp/LoginActivityTest.java,b/4/b4a69ef06219765d5495f1f7d66ee904a5a7bc68
 u
 Eapp/src/androidTest/java/com/rba/unittestmvp/LoginActivityUITest.java,5/c/5c9979562f2acde038319597fa1f4fa0b63a3bcc
+‹
+[app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/AndroidManifest.xml,e/7/e790004cac1fdb758e355af6136bf5ab33103ae5

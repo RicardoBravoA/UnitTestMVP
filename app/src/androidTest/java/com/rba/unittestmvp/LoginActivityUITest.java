@@ -1,5 +1,6 @@
 package com.rba.unittestmvp;
 
+import android.support.design.widget.TextInputLayout;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.Espresso;
 import android.support.test.espresso.action.ViewActions;

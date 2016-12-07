@@ -52,4 +52,19 @@ public class DemoApiManager {
         return demoApi;
     }
 
+    public static Retrofit getRetrofit(){
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.NONE);
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(logging).build();
+
+        return new Retrofit.Builder()
+                .baseUrl(BuildConfig.BASE_URL)
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+    }
+
+
 }
